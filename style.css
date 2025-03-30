@@ -4,6 +4,12 @@ body
     text-align: center;
 }
 
+#product-container
+{
+    display: block;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 .product
 {
     text-align: center;

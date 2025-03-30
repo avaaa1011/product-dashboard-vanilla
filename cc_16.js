@@ -19,7 +19,6 @@ function fetchProductsThen()
         console.error("Error fetching products:", error);  
     });
 }
-fetchProductsThen();
 
 //task 3: fetching products with async/await 
 async function fetchProductsAsync() 
@@ -40,7 +39,6 @@ async function fetchProductsAsync()
         handleError(error);
     }
 }
-fetchProductsAsync();
 
 //task 4: displaying products 
 function displayProducts(products)
@@ -65,3 +63,7 @@ function handleError(error)
     const container = document.getElementById("product-container");
     container.innerHTML = `<p class="error">Error: ${error.message}</p>`;
 }
+
+//task 6: calling all fetch functions 
+fetchProductsThen();
+fetchProductsAsync();

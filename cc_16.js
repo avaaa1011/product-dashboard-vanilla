@@ -58,3 +58,10 @@ function displayProducts(products)
         container.appendChild(productElement);
     });
 }
+
+//task 5: reusable error handler
+function handleError(error)
+{
+    const container = document.getElementById("product-container");
+    container.innerHTML = `<p class="error">Error: ${error.message}</p>`;
+}

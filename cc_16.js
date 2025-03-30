@@ -1,7 +1,7 @@
 //task 2: implementing fetch products 
 function fetchProductsThen() 
 {
-    fetch("https://www.course-api.com/javascript-store-products")
+    fetch("https://www.course-api.com/javascript-store-products") //using fetch() to pull product data from the link
     .then(async (response) => 
     {
         if (!response.ok)
@@ -10,11 +10,11 @@ function fetchProductsThen()
     })
     .then((products) => 
     {
-            console.log("Products fetched with .then():");
+            console.log("Products fetched with .then():"); 
             products.forEach((product) => {
             console.log(product.fields.name); });
      })
-    .catch((error) => 
+    .catch((error) => //using catch() to log errors
     {
         console.error("Error fetching products:", error);  
     });
@@ -23,7 +23,7 @@ function fetchProductsThen()
 //task 3: fetching products with async/await 
 async function fetchProductsAsync() 
 { 
-    try 
+    try //fetching products data from the link 
     { 
         const response = await fetch('https://www.course-api.com/javascript-store-products'); 
         if(!response.ok)
@@ -31,9 +31,9 @@ async function fetchProductsAsync()
             throw new Error("HTTP error: ${response.status}"); 
         }
         const products = await response.json();
-        displayProducts(products);
+        displayProducts(products); //calling a helper function to render the products onto the page
     }
-    catch(error)     
+    catch(error) //if error is found it will be passed onto handleError()
     {
         console.error("Error fetching products:", error.message);
         handleError(error);
@@ -43,17 +43,17 @@ async function fetchProductsAsync()
 //task 4: displaying products 
 function displayProducts(products)
 {
-    const container = document.getElementById("product-container");
+    const container = document.getElementById("product-container"); //selecting product container from style.css
     container.innerHTML = "";
     products.slice(0,5).forEach((product) => 
     {
-        const productElement = document.createElement("div");
+        const productElement = document.createElement("div"); //creating html elemenmts of each product 
         productElement.classList.add("product");
         productElement.innerHTML = `
             <h3>${product.fields.name}</h3>
             <p>Price: $${product.fields.price}</p>
             <img src="${product.fields.image.url}" alt="${product.fields.name}">`;
-        container.appendChild(productElement);
+        container.appendChild(productElement); //appending to the container 
     });
 }
 
